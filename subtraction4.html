@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="jquery-3.1.1.js"></script>
+
+<script>
+  
+$(document).ready(
+  function()
+{
+ 
+  $("#next").hide();
+
+  var rand = 5 ;
+           console.log(rand) ;
+          var htmlimage = '<img src="Images/2.png" height=100px width100px>' ;
+         
+          $("#cimages").html(htmlimage) ;
+          for(var i = 1 ;  i < rand ; i++)
+          {
+             $("#cimages").append(htmlimage) ;
+          }
+
+          var rand = 3 ;
+           console.log(rand) ;
+          var htmlimage = '<img src="Images/2.png" height=100px width100px>' ;
+          console.log("@34");
+          $("#simages").html(htmlimage) ;
+          for(var i = 1 ;  i < rand ; i++)
+          {
+             $("#simages").append(htmlimage) ;
+          }
+
+      
+
+}
+
+)
+function redirect()
+    {
+    window.location="test3.html";
+    }
+        </script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+    
+    <meta charset="UTF-8">
+    <title>Step 3: Subtracting Objects</title>
+
+
+        
+
+    <style>
+    .color1
+{
+  color: #0097a7;
+}
+
+  .total
+    {
+      color: #f50057;
+    }
+    .correct
+    {
+      color: #03a9f4;
+    }
+    .incorrect
+    {
+      color: #00e5ff;
+    }
+   
+
+   
+    .progressbartext{
+        color: #0091EA;
+        font-family: "roboto";
+        width: 75%;
+    }
+    .bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+    .uppershift{
+      
+      display: block;
+      margin: auto;
+        padding-bottom: 1em;
+      margin-top: 3em;
+      color: #2196F3;
+      font-family: "roboto";
+    }
+
+    .textcolor
+    {
+      color:#F44336;
+        font-family: "roboto";
+      
+    }
+    .navbar {
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity:0.9;
+    font-family: "roboto";
+  }
+
+    .navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+    color: #fff !important;
+}
+
+/* The active link */
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+    
+.fontall
+{
+  font-family: roboto;
+}
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">LEARN SUBTRACTION</a>
+     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+       
+      </ul>
+    </div>
+  </div>
+  </nav>
+  </div>
+</div>
+<center>
+   <div class="row" style="margin-top: 4em">
+   <div class="progressbartext">
+  <div class="col-sm-4"><h5 class="text-center">Step 1</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 2</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 3</h5></div>
+</div>
+</div>
+</center>
+  <center>
+<div class="progress" style=" width: 75%; ">
+  <div id="progress_bar" class="progress-bar" role="progressbar" aria-valuenow="70"
+  aria-valuemin="0" aria-valuemax="100" style="width:88%">
+</div>
+</div>
+</center>
+
+<center>
+
+<div style="width=70%;" class="fontall text-center" >
+  <h3 class="textcolor" style="padding-bottom: 20px">Let's see some example of subtraction format</h3>
+<div>
+
+<div class="text-center fontall total"  >
+<h3 style="font-size: 20px">You have 7 apples, your friend eats 3 apples.<br>You have four apples left</h3>
+</div>
+
+<h3 class="correct" style="padding-top: 1px;">7 - 3 = 4</h3>
+<br>
+<div class="text-center fontall total" >
+<h3 style="font-size: 20px">You have 4 apples, your friend eats 2 apples.<br>You have two apples left</h3>
+</div>
+<h3 class="correct" style="padding-top: 1px">4 - 2 = 2</h3>
+
+</center>
+
+
+
+
+
+
+
+
+</div>
+
+</center>
+<br>
+
+
+
+<center>
+        <div id="next-button">
+        <button class="btn btn-primary btn-lg text-center" onclick="redirect();" >Take Test</button>
+        </div>
+</center>
+
+  <br>
+  <br>
+
+
+
+
+
+<div style="width: 100%; bottom: 0; position: absolute;">
+    <footer class="container-fluid bg-4 text-center">
+  <h5 class="text-center" style="color: #ffffff; padding-top:1em;">AI Project</h5>
+  <p class="text-center" style="color: #ffffff; padding-bottom:1em">under the guidance of Dr. Shailendra Singh </p>
+</footer>
+</div>
+
+
+
+</body>
+</html>

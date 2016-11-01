@@ -1,0 +1,352 @@
+<!--58-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+    
+    <meta charset="UTF-8">
+    <title>Test 3: Subtraction</title>
+
+<script src="jquery-3.1.1.js"></script>
+
+ <script type="text/javascript">
+  $("#inc").hide() ;
+  $("#cor").hide() ;
+  $("#next").hide() ;
+
+  $(document).ready(function()
+  
+  {
+        $("#inc").hide() ;
+        $("#cor").hide() ;
+        $("#next").hide() ;
+      
+        var rand1 = Math.floor((Math.random()*9)+1) ;
+        var rand2 = Math.floor((Math.random()*rand1)+0) ;
+        $("#num1").text(rand1) ;
+        $("#num2").text(rand2) ;
+        $("#num11").text(rand1) ;
+        $("#num22").text(rand2) ;
+        var ansv=rand1-rand2;
+        $("#ansd").text(ansv);
+
+        function correct_function()   
+        {
+          $("#cor").show();
+            var correct = $("#cscore").text() ;
+            correct++ ;
+            $("#cscore").text(correct) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x >= arr[1])
+           {
+            console.log(123);
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+                console.log(456);
+                var nextpage = "end.html" ;
+
+                var newhtml = '<center><h3 style="margin-top:0; margin-bottom:0; color: #f50057" class="text-center fontall">You have Complete all the 3 levels</h3><br><a class="btn  btn-primary btn-lg text-center" href='+nextpage+'>Continue</a></center>' ;
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                console.log(789);
+                //try again
+                 var newhtml = '<center><a class="btn  btn-primary text-center btn-lg" href="test3.html">Try Again</a><h4 style="color: #2196F3" class="fontall"><br>You need more practice</h4></center>' ;
+                 $("#next-level").html(newhtml) ;
+
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+            $("#next").show();
+           }
+        }
+
+        function incorrect_answer()  
+        {
+          $("#inc").show("slow");
+            var incorrect = $("#iscore").text() ;
+            incorrect++ ;
+            $("#iscore").text(incorrect) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           // console.log(arr) ;
+           var x = arr[0] ;
+           x++ ;
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x >= arr[1])
+           {
+              // level complete
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+                // next level BONUS MODAL
+                var nextpage = "end.html" ;
+                var newhtml = '<center><h3 style="margin-top:0; margin-bottom:0; color: #f50057" class="fontall text-center">You have Complete all the 3 levels</h3><br><a class="btn  btn-primary btn-lg text-center" href='+nextpage+'>Continue</a></center>' ;
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+               var newhtml = '<center><a class="btn  btn-primary text-center btn-lg" href="test3.html">Try Again</a><h4 style="color: #2196F3" class="fontall"><br>You need more practice</h4></center>' ;
+                 $("#next-level").html(newhtml) ;
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+              $("#next").show();
+           }
+        }
+
+        function generate_next()  // ---------------------------- function for generating next question
+        {
+          var rand1 = Math.floor((Math.random()*9)+1) ;
+          var rand2 = Math.floor((Math.random()*rand1)+0) ;
+          $("#num1").text(rand1) ;
+          $("#num2").text(rand2) ;
+          $("#num11").text(rand1) ;
+          $("#num22").text(rand2) ;
+          var ansv=rand1-rand2;
+        $("#ansd").text(ansv);
+        }
+
+        $("#next").click(function(){   // --------------------------------  function for handling next button----------------
+          generate_next() ;
+          $("#inc").hide() ;
+          $("#cor").hide() ;
+          $("#next").hide() ;
+          $("#question").show("slow") ;
+        }) ;
+
+
+        $("#answer").click(function(){
+          var x = $("#sub-ans").val() ;
+          var n1 = $("#num1").text() ;
+          var n2 = $("#num2").text() ;
+          
+          if(x == "")
+            alert("Please Enter the answer") ;
+          else
+          {
+            if(parseInt(x) == (n1-n2) )
+            {
+              // call to correct function
+              correct_function() ;
+              // alert("correct") ;
+            }
+            else
+            {
+              // call to incorrect function
+              incorrect_answer();
+              // alert("incorrect") ;
+            }
+            $("#question").hide("slow") ;
+          
+        }
+      });
+
+        });
+
+
+         
+  </script>
+
+<style>
+
+.color1
+{
+  color: #00b8d4;
+}
+
+	.total
+    {
+      color: #283593;
+    }
+    .correct
+    {
+      color: #00C853;
+    }
+    .incorrect
+    {
+      color: #DD2C00;
+    }
+   
+    .progressbartext{
+        color: #0091EA;
+        font-family: "roboto";
+        width: 75%;
+    }
+    .bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+    .uppershift{
+      
+      display: block;
+      margin: auto;
+        padding-bottom: 1em;
+      margin-top: 3em;
+      color: #2196F3;
+      font-family: "roboto";
+    }
+
+    .textcolor
+    {
+      color:#F44336;
+        font-family: "roboto";
+      
+    }
+    .navbar {
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity:0.9;
+    font-family: "roboto";
+  }
+
+    .navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+    color: #fff !important;
+}
+
+/* The active link */
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+    
+.fontall
+{
+  font-family: roboto;
+}
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">LEARN SUBTRACTION</a>
+     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+       
+      </ul>
+    </div>
+  </div>
+  </nav>
+  </div>
+</div>
+<center>
+   <div class="row" style="margin-top: 4em">
+   <div class="progressbartext">
+  <div class="col-sm-4"><h5 class="text-center">Step 1</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 2</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 3</h5></div>
+</div>
+</div>
+</center>
+  <center>
+<div class="progress" style=" width: 75%; ">
+  <div id="progress_bar" class="progress-bar" role="progressbar" aria-valuenow="70"
+  aria-valuemin="0" aria-valuemax="100" style="width:92%">
+</div>
+</div>
+</center>
+<center>
+
+    <h3 class="textcolor" style="margin-top: 12px">Let's Solve the Problems</h3>
+  </center>
+<br>
+<div id="score">
+  <div class="row text-center fontall">
+  <div class="col-sm-4">
+  <h4 class="total">Total </h4><h4 class="total" id="tscore">0/5</h4>
+  </div>
+  <div class="col-sm-4">
+  <h4 class="correct">Correct </h4><h4 class="correct" id="cscore">0</h4>
+  </div>
+  <div class="col-sm-4">
+  <h4 class="incorrect">Incorrect </h4><h4 class="incorrect" id="iscore">0</h4>
+
+  </div>
+  </div>
+  
+<center>
+
+<div style="width=70%">
+<div id="qus">
+<br>
+  <p style="font-size: 23px; color: #2196F3;" class="fontall"></p>
+  <br>
+  </div>
+</div>
+</center>
+
+<div id="question" class="row fontall">
+ 
+  <center>
+  <a class="btn-lg btn btn-warning" id="num1">6</a>
+ <label class="fontall" style=" font-style: bold; font-size: 25px; width: 5%">-</label>
+  <a class="btn-lg btn btn-danger" id="num2">2 </a>
+   <label class="fontall" style="font-style: bold; font-size: 25px; width: 5%">=</label>
+   <input id="sub-ans" type="text" class="fontall btn-lg" style="width: 10%;" placeholder="Your Answer">
+   <div style="padding-top: 40px">
+    <button id="answer" class="btn btn-primary btn-lg text-center" >Submit</button>
+    </div>
+  </center>
+  </div>
+ 
+
+<center>
+  
+  <div  id="cor"> <h3 class="fontall correct text-center">Correct Answer</h3></div>
+<div  id="inc"> 
+<h3 class="fontall incorrect text-center">Incorrect Answer</h3>
+<h3 class="fontall text-center" style="color: #f50057"><span id="num11">6</span> - <span id="num22">2</span> = <span id="ansd">4</span></h3>
+</div>
+  <div class="fontall">
+  <br>
+  <button class="btn-primary btn-lg" id="next">Next</button>
+  </div>
+  </center>
+
+  <div id="next-level"></div>
+
+<div style="width: 100%;position: absolute; bottom: 0">
+    <footer class="container-fluid bg-4 text-center">
+  <h5 class="text-center" style="color: #ffffff; padding-top:1em;">AI Project</h5>
+  <p class="text-center" style="color: #ffffff; padding-bottom:1em">under the guidance of Dr. Shailendra Singh </p>
+</footer>
+</div>
+
+
+
+</body>
+</html>

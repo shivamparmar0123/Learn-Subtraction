@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="jquery-3.1.1.js"></script>
+
+<script>
+  
+$(document).ready(
+  function()
+{
+ 
+  $("#next").hide();
+
+  var rand = 2 ;
+           console.log(rand) ;
+          var htmlimage = '<img src="Images/2.png" height=100px width100px>' ;
+          console.log("@34");
+          $("#cimages").html(htmlimage) ;
+          for(var i = 1 ;  i < rand ; i++)
+          {
+             $("#cimages").append(htmlimage) ;
+          }
+
+          var rand = 1 ;
+           console.log(rand) ;
+          var htmlimage = '<img src="Images/2.png" height=100px width100px>' ;
+          console.log("@34");
+          $("#simages").html(htmlimage) ;
+          for(var i = 1 ;  i < rand ; i++)
+          {
+             $("#simages").append(htmlimage) ;
+          }
+
+      
+
+}
+
+)
+function redirect()
+    {
+    window.location="subtraction2.html";
+    }
+        </script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+    
+    <meta charset="UTF-8">
+    <title>Step 3: Subtracting Objects</title>
+
+
+        
+
+    <style>
+    .color1
+{
+  color: #0097a7;
+}
+
+  .total
+    {
+      color: #f50057;
+    }
+    .correct
+    {
+      color: #03a9f4;
+    }
+    .incorrect
+    {
+      color: #00e5ff;
+    }
+   
+
+   
+    .progressbartext{
+        color: #0091EA;
+        font-family: "roboto";
+        width: 75%;
+    }
+    .bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+    .uppershift{
+      
+      display: block;
+      margin: auto;
+        padding-bottom: 1em;
+      margin-top: 3em;
+      color: #2196F3;
+      font-family: "roboto";
+    }
+
+    .textcolor
+    {
+      color:#F44336;
+        font-family: "roboto";
+      
+    }
+    .navbar {
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity:0.9;
+    font-family: "roboto";
+  }
+
+    .navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+    color: #fff !important;
+}
+
+/* The active link */
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+    
+.fontall
+{
+  font-family: roboto;
+}
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">LEARN SUBTRACTION</a>
+     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+       
+      </ul>
+    </div>
+  </div>
+  </nav>
+  </div>
+</div>
+<center>
+   <div class="row" style="margin-top: 4em">
+   <div class="progressbartext">
+  <div class="col-sm-4"><h5 class="text-center">Step 1</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 2</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 3</h5></div>
+</div>
+</div>
+</center>
+  <center>
+<div class="progress" style=" width: 75%; ">
+  <div id="progress_bar" class="progress-bar" role="progressbar" aria-valuenow="70"
+  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+</div>
+</div>
+</center>
+
+<div style="width=70%">
+<center>
+  <h3 class="textcolor">Let's Learn Subtraction</h3>
+
+<div class="text-center fontall">
+<h3 class="correct" style="padding-top: 10px">You have Two apples</h3>
+<div id="cimages"></div>
+<h3 class="correct">Your best friend eat One Apple</h3>
+<h3 class="total" style="padding-top: 20px">How many Apples left?</h3>
+<div id="simages"></div>
+<h3 style="color: #f50057">You have One Apple left</h3>
+
+<div style="margin-top: 50px; color: #00c853">
+<p style="font-size: 20px; color: #ad1457">Subtraction is similar to answering</p>
+<h3 style="color: #880e4f">How many apples left with you ?</h3>
+
+</div>
+
+</center>
+<br>
+
+
+<center>
+        <div id="next-button">
+        <button class="btn btn-success btn-mg text-center" onclick="redirect();" >Learn More</button>
+        </div>
+</center>
+
+  <br>
+  <br>
+  <center>
+  <button id="next" class="btn text-center btn-info btn-lg" onclick="redirect();">Continue</button>
+  </center>
+
+
+
+
+<div style="width: 100%; bottom: 0">
+    <footer class="container-fluid bg-4 text-center">
+  <h5 class="text-center" style="color: #ffffff; padding-top:1em;">AI Project</h5>
+  <p class="text-center" style="color: #ffffff; padding-bottom:1em">under the guidance of Dr. Shailendra Singh </p>
+</footer>
+</div>
+
+
+
+</body>
+</html>

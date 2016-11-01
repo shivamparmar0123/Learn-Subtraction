@@ -1,0 +1,443 @@
+<!--58-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.min.css">
+    
+    <meta charset="UTF-8">
+    <title>Test 2: Comparing Objects</title>
+
+<script src="jquery-3.1.1.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+        $("#answer_c").hide() ;
+        $("#answer_i").hide() ;
+        
+
+         var rand1 = Math.floor((Math.random()*9)+1) ;
+        var rand2 = Math.floor((Math.random()*9)+1) ;
+         if(rand1==rand2)
+            {
+              if(rand1==9)
+                rand1--;
+              else
+                rand1++;
+            }
+
+
+        $("#first").text(rand1) ;
+        $("#second").text(rand2) ;
+
+        function generate_next()
+        {
+          $("#answer").hide() ;
+          $("#qus").show();
+          rand1 = Math.floor((Math.random()*9)+1) ;
+          rand2 = Math.floor((Math.random()*9)+1) ;
+          if(rand1==rand2)
+            {
+              if(rand1==9)
+                rand1--;
+              else
+                rand1++;
+            }
+          
+          console.log(rand1  + "  " + rand2) ;
+          $("#first").text(rand1) ;
+          $("#second").text(rand2) ;
+          $("#question").show() ;
+        }
+
+
+        function correct_answer()  
+        {
+            $("#qus").hide();
+
+          var correct = $("#cscore").text() ;
+            correct++ ;
+            $("#cscore").text(correct) ;
+            console.log("correct : " + correct) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+           var x = arr[0] ;
+           x++ ;
+   
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           console.log("x is " + x +  "   " + "tot :  " + arr[1] ) ; 
+           if(x >= arr[1])
+           {
+              // level complete
+              $("#question").hide() ;
+              $("#answer_c").hide() ;
+              $("#answer_i").hide() ;
+              $("#next_c").hide();
+              $("#cor").show();
+          
+             
+              // check scores
+              var newscore = $("#cscore").text() ;
+              if(newscore > arr[1]-2)
+              {
+              	$("#question").hide() ;
+          		  $("#answer_c").show("slow") ;
+                var nextpage = "subtraction.html" ;
+                var newhtml = '<br><center><a style="position:absolute; bottom:34%; left:46%" class="btn  btn-primary btn-lg text-center" href='+nextpage+'>Next Level</a></center>' ;
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+            $("#question").hide() ;
+              $("#answer_c").show() ;
+              $("#next_c").hide();
+            
+                var newhtml = '<br><center><a style="position:absolute; bottom:34%; left:46%" class="btn  btn-primary text-center btn-lg" href="Test2.html">Try Again</a><h4 style="position:absolute; bottom:27%; left:43%; color: #2196F3" class="fontall">You need more practice</h4></center>' ;
+                 $("#next-level").html(newhtml) ;
+
+              }/////////continute///////from///////here////////
+     
+           }
+           else
+           {
+
+            $("#question").hide() ;
+            $("#answer_c").show("slow") ;
+           }
+        }
+
+        function incorrect_answer()  
+        {
+          $("#qus").hide();
+          $("hint").show();
+
+          
+          var bigv;
+          var smallv;
+          if(rand1>rand2)
+          {
+            bigv=rand1;
+            smallv=rand2;
+          }
+          else
+          {
+            bigv=rand2;
+            smallv=rand1;
+          }
+
+          
+            $("#big").text(bigv) ;
+            $("#small").text(smallv) ;
+
+          var incorrect = $("#iscore").text() ;
+            incorrect++ ;
+            $("#iscore").text(incorrect) ;
+            var total = $("#tscore").text() ;
+            var arr = total.split("/") ;
+       
+           var x = arr[0] ;
+           x++ ;
+         
+           var app = x+"/" + arr[1] ;
+           $("#tscore").text(app) ;
+           if(x >= arr[1])
+           {
+            
+              $("#question").hide() ;
+              $("#answer_i").show();
+              $("#next_i").hide();
+            
+               
+              var newscore = $("#cscore").text() ;
+
+             if(newscore > arr[1]-2)
+              {
+
+                var nextpage = "subtraction.html" ;
+                var newhtml = '<br><center><a style="position:absolute; bottom:28%; left:46%" class="btn btn-default btn-primary btn-lg text-center" href='+nextpage+'>Next Level</a></center>' ;
+                $("#next-level").html(newhtml) ;
+              }
+              else
+              {
+                //try again
+       
+                var newhtml = '<br><center><a style="position:absolute; bottom:30%; left:46%" class="btn  btn-primary text-center btn-lg" href="Test2.html">Try Again</a><h4 style="position:absolute; bottom:22%; left:43%; color: #2196F3" class="fontall">You need more practice</h4></center>' ;
+                 $("#next-level").html(newhtml) ;
+              }
+            //  alert("completed") ;
+           }
+           else
+           {
+              
+              $("#question").hide() ;
+              $("#answer_i").show("slow") ;
+           }
+        }
+
+        
+
+        $("#first").click(function(){
+                                                   
+          var x = $(this).text() ;
+          var y = $("#second").text() ;
+          x = parseInt(x) ;
+          y = parseInt(y) ;
+          console.log(x + "  " + y ) ;  
+
+          if(x > y)
+          {
+          
+            correct_answer() ;
+            
+          }
+          else
+          {
+            incorrect_answer()
+          }
+        }) ;
+
+        $("#second").click(function(){     // -------------------------------  click function for second button
+         
+          var x = $("#first").text() ;
+          var y = $(this).text();
+          x = parseInt(x) ;
+          y = parseInt(y) ;
+          console.log(x + "  " + y ) ;  
+          if(y > x)
+          {
+            // call to correct function
+          //  alert($("#second").text());
+            correct_answer() ;
+            // alert("Correct") ;
+          }
+          else
+          {
+            // call to incorrect function
+          //  alert($("#first").text()) ;
+            incorrect_answer();
+            // alert("Incorrect") ;
+          }
+        }) ;
+
+
+        $("#next_c").click(function(){
+          $("#answer_c").hide() ;
+          generate_next() ;
+        });
+
+        $("#next_i").click(function(){
+          $("#answer_i").hide() ;
+          generate_next() ;
+        });
+
+    });
+    
+
+</script>
+
+<style>
+
+.color1
+{
+  color: #00b8d4;
+}
+
+	.total
+    {
+      color: #283593;
+    }
+    .correct
+    {
+      color: #00C853;
+    }
+    .incorrect
+    {
+      color: #DD2C00;
+    }
+   
+    .progressbartext{
+        color: #0091EA;
+        font-family: "roboto";
+        width: 75%;
+    }
+    .bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+    .uppershift{
+      
+      display: block;
+      margin: auto;
+        padding-bottom: 1em;
+      margin-top: 3em;
+      color: #2196F3;
+      font-family: "roboto";
+    }
+
+    .textcolor
+    {
+      color:#F44336;
+        font-family: "roboto";
+      
+    }
+    .navbar {
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity:0.9;
+    font-family: "roboto";
+  }
+
+    .navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+    color: #fff !important;
+}
+
+/* The active link */
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+    
+.fontall
+{
+  font-family: roboto;
+}
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">LEARN SUBTRACTION</a>
+     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+       
+      </ul>
+    </div>
+  </div>
+  </nav>
+  </div>
+</div>
+<center>
+   <div class="row" style="margin-top: 4em">
+   <div class="progressbartext">
+  <div class="col-sm-4"><h5 class="text-center">Step 1</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 2</h5></div>
+  <div class="col-sm-4"><h5 class="text-center">Step 3</h5></div>
+</div>
+</div>
+</center>
+  <center>
+<div class="progress" style=" width: 75%; ">
+  <div id="progress_bar" class="progress-bar" role="progressbar" aria-valuenow="70"
+  aria-valuemin="0" aria-valuemax="100" style="width:55%">
+</div>
+</div>
+</center>
+<center>
+
+    <h3 class="textcolor" style="margin-top: 12px">Let's Count the Object</h3>
+  </center>
+<br>
+<div id="score">
+  <div class="row text-center fontall">
+  <div class="col-sm-4">
+  <h4 class="total">Total </h4><h4 class="total" id="tscore">0/5</h4>
+  </div>
+  <div class="col-sm-4">
+  <h4 class="correct">Correct </h4><h4 class="correct" id="cscore">0</h4>
+  </div>
+  <div class="col-sm-4">
+  <h4 class="incorrect">Incorrect </h4><h4 class="incorrect" id="iscore">0</h4>
+  </div>
+  </div>
+  
+<center>
+
+<div style="width=70%">
+<div id="qus">
+<br>
+  <p style="font-size: 23px; color: #2196F3;" class="fontall">Which One Is Greater?</p>
+  <br>
+  </div>
+</div>
+</center>
+
+<div id="question" class="row fontall">
+  <div class="col-sm-6">
+  <center>
+  <a class="btn-lg btn btn-warning" id="first">4</a>
+  </center>
+  </div>
+  <div class="col-sm-6">
+  <center>
+  <a class="btn-lg btn btn-danger" id="second">6</a>
+  </center>
+  </div>
+  
+  </div>
+
+<center>
+	<div id="next-level">
+		
+	</div>
+</center>
+
+<center>
+	<div id="answer_c">
+
+  
+  <div  id="cor"> <h3 class="fontall correct text-center">Correct Answer</h3><br></div>
+
+  <div class="fontall">
+ 
+  <button class="btn-primary btn-lg" id="next_c">Next</button>
+  </div>
+  </div>
+  </center>
+
+<center>
+  <div id="answer_i">  
+
+  <div  id="inc"> <h3 class="fontall incorrect text-center">Incorrect Answer</h3></div>
+  <div id="hint">
+  <h4 class="fontall text-center color1" style="padding-top: 10px"><span id="big">0</span> is greater than <span id="small">0</span></h4></s>
+  <br>
+  <div class="row fontall">
+
+  <button class="btn-primary btn-lg" id="next_i">Next</button>
+  </div>
+  </div>
+  </center>
+  
+
+<div style="width: 100%;position: absolute; bottom: 0">
+    <footer class="container-fluid bg-4 text-center">
+  <h5 class="text-center" style="color: #ffffff; padding-top:1em;">AI Project</h5>
+  <p class="text-center" style="color: #ffffff; padding-bottom:1em">under the guidance of Dr. Shailendra Singh </p>
+</footer>
+</div>
+
+
+
+</body>
+</html>
